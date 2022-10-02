@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using Homework5.Models;
+@model List<Homework5.Models.Books>
+<h3><b>Books</b></h3>
+<hr />
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.TextBox("Name", "Search Book Name", new { style = "color: grey" });
+}
+<hr />
+@if (@Model.Count() == 0)
+{
+    <p>No data</p>
+}
+
+else
+{
+<table class="table">
+    <tr>
+        <th><b>#</b></th>
+        <th><b>Name</b></th>
+        <th><b>Author</b></th>
+        <th><b>Type</b></th>
+        <th><b>Page Count</b></th>
+        <th><b>Points</b></th>
+    </tr>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.ID</td>
+            <td>@book.Name</td>
+            <td>@book.Author</td>
+            <td>@book.Type</td>
+            <td>@book.PageCount</td>
+            <td>@book.Points</td>
+        </tr>
+    }
+</table>
+}
+
+    
